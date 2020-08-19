@@ -54,14 +54,6 @@ version = "3.0.4"
 
 [[package]]
 category = "main"
-description = "Composable command line interface toolkit"
-name = "click"
-optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
-version = "7.1.2"
-
-[[package]]
-category = "main"
 description = "Use Database URLs in your Django Application."
 name = "dj-database-url"
 optional = false
@@ -102,22 +94,21 @@ description = "The dynamic configurator for your Python Project"
 name = "dynaconf"
 optional = false
 python-versions = "*"
-version = "2.2.3"
+version = "3.1.0"
 
 [package.dependencies]
-click = "*"
-python-box = "<4.0.0"
-python-dotenv = "*"
-toml = "*"
+[package.dependencies.toml]
+optional = true
+version = "*"
 
 [package.extras]
-all = ["redis", "pyyaml", "configobj", "hvac"]
+all = ["redis", "ruamel.yaml", "configobj", "hvac"]
 configobj = ["configobj"]
 ini = ["configobj"]
 redis = ["redis"]
 toml = ["toml"]
 vault = ["hvac"]
-yaml = ["pyyaml"]
+yaml = ["ruamel.yaml"]
 
 [[package]]
 category = "main"
@@ -175,17 +166,6 @@ version = "1.7.1"
 
 [[package]]
 category = "main"
-description = "Advanced Python dictionaries with dot notation access"
-name = "python-box"
-optional = false
-python-versions = "*"
-version = "3.4.6"
-
-[package.extras]
-testing = ["pytest", "coverage (>=3.6)", "pytest-cov"]
-
-[[package]]
-category = "main"
 description = "Extensions to the standard Python datetime module"
 name = "python-dateutil"
 optional = false
@@ -194,17 +174,6 @@ version = "2.8.1"
 
 [package.dependencies]
 six = ">=1.5"
-
-[[package]]
-category = "main"
-description = "Add .env support to your django/flask apps in development and deployments"
-name = "python-dotenv"
-optional = false
-python-versions = "*"
-version = "0.13.0"
-
-[package.extras]
-cli = ["click (>=5.0)"]
 
 [[package]]
 category = "main"
@@ -329,7 +298,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 version = "0.12.0"
 
 [metadata]
-content-hash = "cb238f08f26d3124a6254d89a44c25268c07435fc61153951f9059a1ccb40629"
+content-hash = "4fc6075aa9a2cad47c97214bde339fe502d70643967e9c9009296a673e0b1619"
 python-versions = "^3.7"
 
 [metadata.files]
@@ -349,10 +318,6 @@ chardet = [
     {file = "chardet-3.0.4-py2.py3-none-any.whl", hash = "sha256:fc323ffcaeaed0e0a02bf4d117757b98aed530d9ed4531e3e15460124c106691"},
     {file = "chardet-3.0.4.tar.gz", hash = "sha256:84ab92ed1c4d4f16916e05906b6b75a6c0fb5db821cc65e70cbd64a3e2a5eaae"},
 ]
-click = [
-    {file = "click-7.1.2-py2.py3-none-any.whl", hash = "sha256:dacca89f4bfadd5de3d7489b7c8a566eee0d3676333fbb50030263894c38c0dc"},
-    {file = "click-7.1.2.tar.gz", hash = "sha256:d2b5255c7c6349bc1bd1e59e08cd12acbbd63ce649f2588755783aa94dfb6b1a"},
-]
 dj-database-url = [
     {file = "dj-database-url-0.5.0.tar.gz", hash = "sha256:4aeaeb1f573c74835b0686a2b46b85990571159ffc21aa57ecd4d1e1cb334163"},
     {file = "dj_database_url-0.5.0-py2.py3-none-any.whl", hash = "sha256:851785365761ebe4994a921b433062309eb882fedd318e1b0fcecc607ed02da9"},
@@ -366,8 +331,8 @@ django-model-utils = [
     {file = "django_model_utils-4.0.0-py2.py3-none-any.whl", hash = "sha256:9cf882e5b604421b62dbe57ad2b18464dc9c8f963fc3f9831badccae66c1139c"},
 ]
 dynaconf = [
-    {file = "dynaconf-2.2.3-py2.py3-none-any.whl", hash = "sha256:e803cdab2d7addd539c4ee8d121f15ab0b63a83a5b723150e1746aa7e8063adb"},
-    {file = "dynaconf-2.2.3.tar.gz", hash = "sha256:26b84f2b234a203f6005463d954c9f007181c09345eaaab3fc38503acbdadc7d"},
+    {file = "dynaconf-3.1.0-py2.py3-none-any.whl", hash = "sha256:c5866c43fa9073f342a2b0b840e44247b5363426dff4c4ab9bdd668448a28bd6"},
+    {file = "dynaconf-3.1.0.tar.gz", hash = "sha256:9914ada84c209479b7235548c846bb3c6d82a72e57b833c0cff0178f52f2d229"},
 ]
 gunicorn = [
     {file = "gunicorn-20.0.4-py2.py3-none-any.whl", hash = "sha256:cd4a810dd51bf497552cf3f863b575dabd73d6ad6a91075b65936b151cbf4f9c"},
@@ -401,23 +366,16 @@ pysocks = [
     {file = "PySocks-1.7.1-py3-none-any.whl", hash = "sha256:2725bd0a9925919b9b51739eea5f9e2bae91e83288108a9ad338b2e3a4435ee5"},
     {file = "PySocks-1.7.1.tar.gz", hash = "sha256:3f8804571ebe159c380ac6de37643bb4685970655d3bba243530d6558b799aa0"},
 ]
-python-box = [
-    {file = "python-box-3.4.6.tar.gz", hash = "sha256:694a7555e3ff9fbbce734bbaef3aad92b8e4ed0659d3ed04d56b6a0a0eff26a9"},
-    {file = "python_box-3.4.6-py2.py3-none-any.whl", hash = "sha256:a71d3dc9dbaa34c8597d3517c89a8041bd62fa875f23c0f3dad55e1958e3ce10"},
-]
 python-dateutil = [
     {file = "python-dateutil-2.8.1.tar.gz", hash = "sha256:73ebfe9dbf22e832286dafa60473e4cd239f8592f699aa5adaf10050e6e1823c"},
     {file = "python_dateutil-2.8.1-py2.py3-none-any.whl", hash = "sha256:75bb3f31ea686f1197762692a9ee6a7550b59fc6ca3a1f4b5d7e32fb98e2da2a"},
-]
-python-dotenv = [
-    {file = "python-dotenv-0.13.0.tar.gz", hash = "sha256:3b9909bc96b0edc6b01586e1eed05e71174ef4e04c71da5786370cebea53ad74"},
-    {file = "python_dotenv-0.13.0-py2.py3-none-any.whl", hash = "sha256:25c0ff1a3e12f4bde8d592cc254ab075cfe734fc5dd989036716fd17ee7e5ec7"},
 ]
 pytz = [
     {file = "pytz-2020.1-py2.py3-none-any.whl", hash = "sha256:a494d53b6d39c3c6e44c3bec237336e14305e4f29bbf800b599253057fbb79ed"},
     {file = "pytz-2020.1.tar.gz", hash = "sha256:c35965d010ce31b23eeb663ed3cc8c906275d6be1a34393a1d73a41febf4a048"},
 ]
 requests = [
+    {file = "requests-2.23.0-py2.7.egg", hash = "sha256:5d2d0ffbb515f39417009a46c14256291061ac01ba8f875b90cad137de83beb4"},
     {file = "requests-2.23.0-py2.py3-none-any.whl", hash = "sha256:43999036bfa82904b6af1d99e4882b560e5e2c68e5c4b0aa03b655f3d7d73fee"},
     {file = "requests-2.23.0.tar.gz", hash = "sha256:b3f43d496c6daba4493e7c431722aeb7dbc6288f52a6e04e7b6023b0247817e6"},
 ]
